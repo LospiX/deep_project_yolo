@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from IPython import display
+from datasets import load_dataset
 
 ############
 #| PARAMS
@@ -24,11 +25,13 @@ EPOCHS = 250
 
 
 ############
-#| LOAD MODEL
+#| LOAD MODEL & DATASET
 #|
 device = torch.device("cuda:0")
 print("Device: ", device)
 model = YOLO(MODEL_NAME).to(device)
+# Load the dataset with streaming
+dataset = load_dataset('kili-technology/plastic_in_river', split='train', streaming=True)
 #######
 
 
